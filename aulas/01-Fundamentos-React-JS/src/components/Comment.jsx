@@ -1,11 +1,16 @@
 import { ThumbsUp, Trash } from "@phosphor-icons/react"
 import styles from "./Comment.module.css"
 import { TrashSimple } from "@phosphor-icons/react/dist/ssr"
+import { Avatar } from "./avatar"
 
-export function Comment() {
+export function Comment({ content, onDeleteComment }) {
+    function handleDeleteComment () {
+        onDeleteComment(content);
+    }
+
     return(
         <div className={styles.comment}>
-            <img src="https://scontent.fsdu12-2.fna.fbcdn.net/v/t39.30808-6/361846359_7221978177819247_3236259925522704566_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=efb6e6&_nc_eui2=AeE1OUxkmYH-0uQm5d9rIw8giKU2Y6TDK6OIpTZjpMMro4rOSzHZmEcrCy2wD-KJvdrFqRzzAESl3L_pxlf2S5qy&_nc_ohc=CmbAkMQDKWQAX-IuWtQ&_nc_ht=scontent.fsdu12-2.fna&oh=00_AfA5_i1vgGg8vxjsgDlNrXk2s7Ps9feDYzKvtH1e5mwPkg&oe=65A54AA1"/>   
+            <Avatar hasBorder={false} src="https://scontent.fsdu12-2.fna.fbcdn.net/v/t39.30808-6/361846359_7221978177819247_3236259925522704566_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=efb6e6&_nc_eui2=AeE1OUxkmYH-0uQm5d9rIw8giKU2Y6TDK6OIpTZjpMMro4rOSzHZmEcrCy2wD-KJvdrFqRzzAESl3L_pxlf2S5qy&_nc_ohc=6Mn7sHXbqjEAX_qXXJ2&_nc_ht=scontent.fsdu12-2.fna&oh=00_AfAWf0uKKDgYVjG_4CPqVaOjCVZ0rCeATniZWRYqj3ebVQ&oe=65AB3961"/>   
 
             <div className={styles.commentBox}>
                 <div className={styles.commentContent}>
@@ -14,12 +19,12 @@ export function Comment() {
                         <time title="12 de Janeiro às 23:08h" dateTime='2024-01-12'>Cerca de 1h atrás</time>
                         </div>
 
-                        <button title="Deletar comentário">
+                        <button onClick={handleDeleteComment} title="Deletar comentário">
                          <Trash  size={24} />
                         </button>
                     </header>  
  
-                  <p>Muito bom Devon, parabéns!! 👏👏</p>
+                  <p>{content}</p>
                 </div>
                 
                 <footer>
